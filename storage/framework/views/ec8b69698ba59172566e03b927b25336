@@ -1,0 +1,48 @@
+<?php $__env->startSection('main'); ?>
+
+    <div class="main" style="padding: 10px;border:solid;border-color:blue;">
+
+        <div class="main-category" style="border:solid;border-color:yellowgreen;float:left;width:18%;">
+            <ul>
+                <?php foreach($categories as $categoryRS): ?>
+
+
+                    <li> <?php echo e($categoryRS['name']); ?></li>
+                    <ul>
+                        <?php foreach($sub_categories as $sub_categoryRS): ?>
+                            <?php if($sub_categoryRS['category_id']==$categoryRS['id']): ?>
+                                <li> <?php echo e($sub_categoryRS['name']); ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endforeach; ?>
+            </ul>
+
+        </div>
+
+        <div class="main-content" style="border:solid;border-color:yellow;float:left;width:80%">
+            <?php for($i=0; $i<count($products);$i++): ?>
+                <a href="pages/product/<?php echo e($products[$i]['id']); ?>">
+                    <div class="product" style="float:left; margin:5px; padding:5px; height:100px width:250px;">
+                        <div class="product_image" style="clear:both; margin:20px; padding:10px; height:100px width:250px;">
+                            <img src="<?php echo e($products[$i]['main_image_path']); ?>" height="200px" width="200px">
+                        </div>
+                        <div class="product_info" style="clear:both; margin:20px; padding:10px; height:100px width:250px;">
+
+                            <?php echo e('Name: ' . $products[$i]['name']); ?> <br>
+                            <?php echo e('Price:' . $products[$i]['price']); ?>
+
+
+                        </div>
+                    </div>
+                </a>
+            <?php endfor; ?>
+            <div style="clear:both;">
+                <?php echo $products->render(); ?>
+
+            </div>
+        </div>
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

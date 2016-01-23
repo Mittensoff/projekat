@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projekat</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<img src="<?php echo e($product['main_image_path']); ?>">A </img>
+<img src="<?php echo e($product['image_path1']); ?>">B </img>
+
+
+</body>
+</html>

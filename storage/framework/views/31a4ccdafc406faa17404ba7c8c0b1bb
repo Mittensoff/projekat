@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Projekat</title>
+    <meta charset="UTF-8">
+    <?php /*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*/ ?>
+    <script src="/js/jquery-1.11.3.js"></script>
+    <script src="/js/categorylist.js"></script>
+</head>
+<body>
+<?php echo $__env->yieldContent('header'); ?>
+
+<?php echo $__env->yieldContent('main'); ?>
+
+<?php echo $__env->yieldContent('footer'); ?>
+
+
+</body>
+</html>

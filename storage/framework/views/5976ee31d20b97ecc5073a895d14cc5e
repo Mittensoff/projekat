@@ -1,0 +1,42 @@
+<?php $__env->startSection('main'); ?>
+    <?php /*Filterisanje i lista proizvoda*/ ?>
+    <div class="main-filter" style="width:13%;float:left">
+        <span>Price Range:
+            <?php echo Form::open(['method'=>'get','url'=>'/pages/sub_category_filt/'.$sub_category_id,'name'=>'filter_form']); ?>
+
+            <?php echo Form::text("min_price",$min_price); ?>
+
+            <?php echo Form::text("max_price",$max_price); ?>
+
+        </span><br>
+        <span><?php echo Form::select("colors",$colors,null); ?>
+
+        </span><br>
+        <span><?php echo Form::select("types",$types,null); ?>
+
+        </span>
+        <span><?php echo Form::select('sellers',$sellers,null); ?></span><br>
+        <span> <?php echo Form::submit('submit',['name'=>'submit_filter']); ?></span>
+        <?php echo Form::close(); ?>
+
+
+    </div>
+    <div class="main-products">
+
+        <?php foreach($products as $product): ?>
+            <a href="<?php echo e(url("/pages/product/".$product['id'])); ?>">
+                <div class="product-div" id="product-div-id-<?php echo e($product['id']); ?>}"
+                     style="height:100px width:250px;float:left;padding:5px; margin:5px">
+                    <img src="<?php echo e($product->main_image_path); ?>"> <br>
+                    <?php echo e($product->name); ?><br>
+                    <?php echo e($product->price); ?><br>
+                    <span><?php echo e($product->short_description); ?></span><br>
+                    <?php echo e($product->instock); ?><br>
+                </div>
+            </a>
+        <?php endforeach; ?>
+
+
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
